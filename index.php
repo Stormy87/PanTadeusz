@@ -16,22 +16,27 @@
             <div class="col-4">
                 <div class="list-group">
                     <a href="./" class="list-group-item list-group-item-action">Strona główna</a>
-                    <a href="k1.html" class="list-group-item list-group-item-action">Księga 1</a>
-                    <a href="k2.html" class="list-group-item list-group-item-action">Księga 2</a>
-                    <a href="k3.html" class="list-group-item list-group-item-action">Księga 3</a>
-                    <a href="k4.html" class="list-group-item list-group-item-action">Księga 4</a>
-                    <a href="k5.html" class="list-group-item list-group-item-action">Księga 5</a>
-                    <a href="k6.html" class="list-group-item list-group-item-action">Księga 6</a>
-                    <a href="k7.html" class="list-group-item list-group-item-action">Księga 7</a>
-                    <a href="k8.html" class="list-group-item list-group-item-action">Księga 8</a>
-                    <a href="k9.html" class="list-group-item list-group-item-action">Księga 9</a>
-                    <a href="k10.html" class="list-group-item list-group-item-action">Księga 10</a>
-                    <a href="k11.html" class="list-group-item list-group-item-action">Księga 11</a>
-                    <a href="k12.html" class="list-group-item list-group-item-action">Księga 12</a>
-
+                    <?php
+                    for ($k=1; $k <=12 ; $k++) { 
+                        $active = isset($_GET['k']) && $_GET['k'] == $k ? "active" : "";
+                        echo "<a href='index.php?k=$k'class='list-group-item list-group-item-action $active'>Księga $k</a>";
+                    }
+                    ?>
                 </div>
             </div>
-            <div class="col-8"></div>
+            <div class="col-8">
+                <?php
+                if (isset($_GET['k'])) {
+                    $i = $_GET['k'];
+                    include_once("k".$i.".html");
+                }
+                else
+                {
+                    echo "<img src='Pan-Tadeusz.jpg' alt='Pan'  class='img-fluid img-thumbnail'>";
+                }
+
+                ?>
+            </div>
         </div>
     </section>
     <footer class="container">
